@@ -6,5 +6,5 @@
       "config": { "zeroConfig": true }
     }
   ],
-  "ignoreCommand": "npx vite lint --quiet || exit 0"
+  "ignoreCommand": "npx eslint . --quiet || exit 0"
 }

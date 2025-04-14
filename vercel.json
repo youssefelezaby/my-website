@@ -1,9 +1,0 @@
-{
-  "builds": [
-    {
-      "src": "...",
-      "use": "...",
-      "config": { "zeroConfig": true }
-    }
-  ]
-}

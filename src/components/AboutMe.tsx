@@ -36,7 +36,7 @@ const AboutMe: React.FC = () => {
   return (
     <React.Fragment>
       <section className="about-me relative mt-16 " id="about-me" ref={ref}>
-        <div className="title-container flex flex-col justify-center items-center p-16 w-1/2 max-lg:w-full max-lg:p-0 max-lg:items-start max-lg:p-16">
+        <div className="title-container flex flex-col justify-center items-center p-16 w-1/2 max-lg:w-full max-lg:p-0 max-lg:items-start">
           <motion.div
             ref={animationReference}
             style={{

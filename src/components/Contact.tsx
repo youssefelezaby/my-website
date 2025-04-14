@@ -110,7 +110,10 @@ const Contact: React.FC = () => {
     if (isMobile) {
       const inputs = document.querySelectorAll("input, textarea");
       inputs.forEach((input) => {
-        input.style.fontSize = "16px"; // 16px is the minimum font size that doesn't trigger zoom on iOS
+        // Assert that input is an HTMLElement to access style
+        if (input instanceof HTMLElement) {
+          input.style.fontSize = "16px"; // 16px is the minimum font size that doesn't trigger zoom on iOS
+        }
       });
     }
   }, []);

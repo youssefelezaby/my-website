@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 const ServiceStatus: React.FC = () => {
   const [status, setStatus] = useState("");
@@ -15,15 +14,6 @@ const ServiceStatus: React.FC = () => {
       return "!text-red-500";
     }
   };
-  const iconColor = () => {
-    if (status === "operational") {
-      return "bg-green-500";
-    } else if (status === "downtime") {
-      return "bg-yellow-500";
-    } else if (status === "degraded") {
-      return "bg-red-500";
-    }
-  };
 
   useEffect(() => {
     async function getStatusData() {
@@ -36,8 +26,16 @@ const ServiceStatus: React.FC = () => {
     }
 
     getStatusData();
-  }, []);
-  return;
+  }, [apiServiceStatusURL]); // Add apiServiceStatusURL to dependency array
+
+  return (
+    <div>
+      <p>
+        {" "}
+        <span className={statusColor()}>{status || ""}</span>
+      </p>
+    </div>
+  );
 };
 
 export default ServiceStatus;

@@ -1,0 +1,10 @@
+{
+  "builds": [
+    {
+      "src": "...",
+      "use": "...",
+      "config": { "zeroConfig": true }
+    }
+  ],
+  "ignoreCommand": "npx next lint --quiet || exit 0"
+}

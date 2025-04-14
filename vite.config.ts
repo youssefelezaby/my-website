@@ -6,7 +6,20 @@ import dotenv from "dotenv";
 dotenv.config();
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    {
+      name: "disable-eslint",
+      enforce: "pre",
+      config() {
+        return {
+          esbuild: {
+            legalComments: "none",
+          },
+        };
+      },
+    },
+  ],
   build: {
     // ...
     rollupOptions: {

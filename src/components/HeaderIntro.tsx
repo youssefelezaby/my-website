@@ -23,7 +23,7 @@ const HeaderIntro: React.FC = () => {
       <img
         src={headerIntroData.profilepicture}
         alt={headerIntroData.profilepicture}
-        className="w-1/6 drop-shadow-2xl rounded-full max-lg:w-2/6 max-md:w-2/4 max-sm:w-3/4 "
+        className="w-1/5 drop-shadow-2xl rounded-full max-lg:w-2/6 max-md:w-2/4 max-sm:w-3/4 "
       />
 
       <div className="flex flex-col gap-4 max-w-[60rem] text-center">

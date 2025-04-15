@@ -36,7 +36,7 @@ const AboutMe: React.FC = () => {
   return (
     <React.Fragment>
       <section className="about-me relative mt-16 " id="about-me" ref={ref}>
-        <div className="title-container flex flex-col justify-center items-center p-16 w-1/2 max-lg:w-full max-lg:p-0 max-lg:items-start">
+        <div className="title-container flex flex-col justify-center items-center gap-6 p-32 w-1/2 max-lg:w-full max-lg:p-16 max-lg:items-start">
           <motion.div
             className="max-lg:w-full max-lg:flex max-lg:flex-col max-lg:items-start md:flex md:flex-col md:items-center md:w-full"
             ref={animationReference}
@@ -46,7 +46,7 @@ const AboutMe: React.FC = () => {
               textAlign: "left",
             }}
           >
-            <p className="text-[--black] mb-6 text-center max-lg:text-left max-lg:pl-20 md:pl-0 ">
+            <p className="text-[--black] mb-6 text-center max-lg:text-left max-lg:pl-0 md:pl-0 ">
               <span className="text-orange">&lt;</span>
               {language === "DE" ? aboutMeData.title : aboutMeData.title_EN}
               <span className="text-orange">/&gt;</span>

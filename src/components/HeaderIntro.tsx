@@ -7,6 +7,7 @@ import { useActiveSectionContext } from "../context/active-section-context";
 import { useLanguage } from "../context/language-context";
 import { BsMouse } from "react-icons/bs";
 import GradientText from "./GradientText";
+import cvPdf from "../assets/CV.pdf";
 const HeaderIntro: React.FC = () => {
   const { language } = useLanguage();
   const { ref } = useSectionInView("Home", 0.5);
@@ -52,11 +53,23 @@ const HeaderIntro: React.FC = () => {
             key={index}
             label={language === "DE" ? button.label.de : button.label.en}
             iconSVG={button.icon}
-            link={`#${button.name.toLocaleLowerCase()}`}
+            link={
+              button.name.toLowerCase() === "cv"
+                ? undefined
+                : `#${button.name.toLowerCase()}`
+            }
             buttoncolor={button.color}
             onClick={() => {
-              setActiveSection(button.name);
-              setTimeOfLastClick(Date.now());
+              if (button.name.toLowerCase() === "cv") {
+                // Replace with your actual CV file path
+                const link = document.createElement("a");
+                link.href = cvPdf;
+                link.download = "CV.pdf";
+                link.click();
+              } else {
+                setActiveSection(button.name);
+                setTimeOfLastClick(Date.now());
+              }
             }}
           />
         ))}

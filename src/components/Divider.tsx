@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   widthStyles,
   spaceStyles,
@@ -28,6 +28,62 @@ const Divider: React.FC<DividerProps> = ({
   height,
   dividerStyle,
 }) => {
+  const [currentWidthStyles, setCurrentWidthStyles] = useState(widthStyles);
+  const [currentSpaceStyles, setCurrentSpaceStyles] = useState(spaceStyles);
+
+  useEffect(() => {
+    const updateStyles = () => {
+      const screenWidth = window.innerWidth;
+
+      if (screenWidth >= 768 && screenWidth <= 1024) {
+        setCurrentWidthStyles({
+          ...widthStyles,
+          "outer-right-to-inner-left": {
+            widths: ["50.1%", "50.1%"],
+          },
+          "middle-to-inner-left": {
+            widths: ["50.1%", "50.1%"],
+          },
+        });
+
+        setCurrentSpaceStyles({
+          ...spaceStyles,
+          "middle-to-inner-left": {
+            marginTop: "-2.5rem",
+            width: "0.3%",
+          },
+        });
+      } else {
+        setCurrentWidthStyles({
+          ...widthStyles,
+          "outer-right-to-inner-left": {
+            widths: ["74.45%", "74.45%"],
+          },
+          "middle-to-inner-left": {
+            widths: ["50.1%", "49%"],
+          },
+        });
+
+        setCurrentSpaceStyles({
+          ...spaceStyles,
+          "middle-to-inner-left": {
+            marginTop: "-2.5rem",
+            width: "50%",
+          },
+        });
+      }
+    };
+
+    // Set initial value
+    updateStyles();
+
+    // Add event listener for resize events
+    window.addEventListener("resize", updateStyles);
+
+    // Clean up
+    return () => window.removeEventListener("resize", updateStyles);
+  }, []);
+
   const borderStyle = {
     borderColor: `var(--${color})`,
     borderStyle: `${dividerStyle}`,
@@ -35,8 +91,8 @@ const Divider: React.FC<DividerProps> = ({
 
   const heightStyle = heightStyles[height];
   const directionStyle = directionStyles[direction];
-  const spaceStyle = spaceStyles[direction];
-  const widthStyle = widthStyles[direction];
+  const spaceStyle = currentSpaceStyles[direction];
+  const widthStyle = currentWidthStyles[direction];
 
   return (
     <div style={directionStyle}>

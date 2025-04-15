@@ -7,7 +7,7 @@ import { useActiveSectionContext } from "../context/active-section-context";
 import { useLanguage } from "../context/language-context";
 import { BsMouse } from "react-icons/bs";
 import GradientText from "./GradientText";
-import cvPdf from "../assets/CV.pdf";
+import cvPdf from "/public/CV.pdf";
 const HeaderIntro: React.FC = () => {
   const { language } = useLanguage();
   const { ref } = useSectionInView("Home", 0.5);

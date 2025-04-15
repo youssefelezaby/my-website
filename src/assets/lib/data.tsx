@@ -657,7 +657,8 @@ export const spaceStyles: Record<string, React.CSSProperties> = {
   },
   "middle-to-inner-left": {
     marginTop: "-2.5rem",
-    width: "50%",
+    width:
+      window.innerWidth >= 768 && window.innerWidth <= 1024 ? "0.4%" : "50%",
   },
   middle: {
     marginTop: "-2.5rem",

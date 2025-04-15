@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from "react";
 import Layout from "../layout/layout";
 import Footer from "../components/Footer";
 import ThemeSwitch from "../components/theme-switch";
-import { useTheme } from "../context/theme-context";
+
 import { ScrollProgress } from "../components/ScrollProgress";
 import Divider from "../components/Divider";
 import ProjectSlider from "../components/ProjectSlider";

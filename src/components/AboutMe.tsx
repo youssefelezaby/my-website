@@ -38,6 +38,7 @@ const AboutMe: React.FC = () => {
       <section className="about-me relative mt-16 " id="about-me" ref={ref}>
         <div className="title-container flex flex-col justify-center items-center p-16 w-1/2 max-lg:w-full max-lg:p-0 max-lg:items-start">
           <motion.div
+            className="max-lg:w-full max-lg:flex max-lg:flex-col max-lg:items-start md:flex md:flex-col md:items-center md:w-full"
             ref={animationReference}
             style={{
               scale: scaleProgess,
@@ -45,7 +46,7 @@ const AboutMe: React.FC = () => {
               textAlign: "left",
             }}
           >
-            <p className="text-[--black] mb-6 text-center max-lg:text-left max-lg:pl-4">
+            <p className="text-[--black] mb-6 text-center max-lg:text-left max-lg:pl-20 md:pl-0 ">
               <span className="text-orange">&lt;</span>
               {language === "DE" ? aboutMeData.title : aboutMeData.title_EN}
               <span className="text-orange">/&gt;</span>
@@ -53,7 +54,7 @@ const AboutMe: React.FC = () => {
             <h2 className="text-[--black] mb-6 text-center max-lg:text-left max-lg:pl-4">
               {language === "DE"
                 ? "Meine praktische Erfahrung"
-                : "My Real-world experience"}
+                : "Real-world experience"}
             </h2>
           </motion.div>
         </div>

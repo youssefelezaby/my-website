@@ -36,21 +36,23 @@ const TechStack: React.FC = () => {
               scale: scaleProgess,
               opacity: opacityProgess,
             }}
-            className="max-lg:w-full max-lg:flex max-lg:flex-col max-lg:items-start"
+            className="max-lg:w-full max-lg:flex max-lg:flex-col max-lg:items-start md:flex md:flex-col md:items-center md:w-full"
           >
-            <p className="text-[--black] mb-6 text-center max-lg:text-left max-lg:ml-11">
+            <p className="text-[--black] mb-6 text-center max-lg:text-left max-lg:ml-11 md:text-center md:ml-0 md:pl-0 md:pr-11">
               <span className="text-[--orange]">&lt;</span>
               {language === "DE" ? "Kenntnisse" : "Skills"}
               <span className="text-[--orange]">/&gt;</span>
             </p>
-            <h2>{language === "DE" ? "Meine Techstack" : "My TechStack"}</h2>
+            <h2 className="md:text-center">
+              {language === "DE" ? "Meine Techstack" : "My TechStack"}
+            </h2>
           </motion.div>
         </div>
-        <div className="flex gap-20 justify-center max-lg:flex-col max-lg:gap-10 relative">
-          <div className="max-w-4xl flex-1 max-lg:w-full max-lg:mb-10">
+        <div className="flex gap-20 justify-center max-lg:flex-col max-lg:gap-10 md:items-center relative">
+          <div className="max-w-4xl flex-1 max-lg:w-full max-lg:mb-10 md:flex md:justify-center">
             <SkillSection skillsData={skillsDataWeb} theme={theme} />
           </div>
-          <div className="max-w-4xl flex-1 flex flex-col h-[inherit] justify-around gap-20 max-lg:w-full">
+          <div className="max-w-4xl flex-1 flex flex-col h-[inherit] justify-around gap-20 max-lg:w-full md:items-center">
             <SkillSection skillsData={skillsDataDesign} theme={theme} />
             <SkillSection skillsData={skillsDataCMS} theme={theme} />
           </div>

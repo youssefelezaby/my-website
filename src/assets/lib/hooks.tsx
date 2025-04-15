@@ -6,7 +6,7 @@ import type { SectionName } from "./types";
 export function useSectionInView(sectionName: SectionName, threshold = 0.75) {
   const isMobile = window.innerWidth <= 1024;
   const { ref, inView } = useInView({
-    threshold: isMobile ? 0.1 : threshold,
+    threshold: sectionName === "Projects" ? 0.2 : isMobile ? 0.1 : threshold,
   });
   const { setActiveSection, timeOfLastClick } = useActiveSectionContext();
 

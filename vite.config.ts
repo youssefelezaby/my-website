@@ -35,4 +35,8 @@ export default defineConfig({
       ],
     },
   },
+  server: {
+    host: "0.0.0.0", // This exposes the dev server to your network
+    port: 5713, // Optional: specify a port
+  },
 });

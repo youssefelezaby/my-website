@@ -64,7 +64,7 @@ const HeaderIntro: React.FC = () => {
                 // Replace with your actual CV file path
                 const link = document.createElement("a");
                 link.href = cvPdf;
-                link.download = "CV.pdf";
+                link.download = "CV";
                 link.click();
               } else {
                 setActiveSection(button.name);

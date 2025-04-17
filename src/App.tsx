@@ -14,8 +14,6 @@ function App() {
             <ActiveSectionContextProvider>
               <Routes>
                 <Route path="/" element={<Home />}></Route>
-                <Route path="/imprint" element={<Home />}></Route>
-                <Route path="/privacy" element={<Home />}></Route>
               </Routes>
             </ActiveSectionContextProvider>
           </LanguageContextProvider>

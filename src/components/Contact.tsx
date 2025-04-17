@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import emailjs from "@emailjs/browser";
 
 const Contact: React.FC = () => {
-  const formRef = useRef(null);
+  const formRef = useRef<HTMLFormElement>(null); // Specify the element type
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
@@ -32,6 +32,10 @@ const Contact: React.FC = () => {
 
   const notifySentForm: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
+    if (!formRef.current) {
+      console.error("Form reference is not available.");
+      return;
+    }
     setLoading(true);
     try {
       await emailjs.sendForm(
@@ -262,27 +266,30 @@ ${name}${lastUpdatedField === "name" ? (cursorBlink ? "|" : " ") : ""}
                   : "bg-[--icewhite] dark-shadow"
               } max-sm:text-lg max-sm:p-10`}
             />
-            <Button
-              value={
-                loading
-                  ? language === "DE"
-                    ? "Senden..."
-                    : "Sending..."
-                  : language === "DE"
-                  ? `${contactData.button.value.de}`
-                  : `${contactData.button.value.en}`
-              }
-              iconSVG={contactData.icon}
-              buttoncolor={contactData.colors.main}
-              iconcolor={contactData.colors.icon}
-              type="submit"
-              elementType="input"
-            />
-            {isSent && (
+            {!isSent ? (
+              <Button
+                value={
+                  loading
+                    ? language === "DE"
+                      ? "Senden..."
+                      : "Sending..."
+                    : language === "DE" // Default text when not loading and not sent
+                    ? `${contactData.button.value.de}`
+                    : `${contactData.button.value.en}`
+                }
+                iconSVG={contactData.icon}
+                buttoncolor={contactData.colors.main}
+                iconcolor={contactData.colors.icon}
+                type="submit"
+                elementType="input"
+                disabled={loading}
+              />
+            ) : (
+              // Display only the success text after sending
               <p className="mt-4 text-center w-full">
                 {language === "DE"
-                  ? "E-Mail erfolgreich gesende! ✅"
-                  : "Email sent successfully! ✅"}
+                  ? "E-Mail erfolgreich gesendet! ✅"
+                  : "E-Mail Sent Successfully! ✅"}
               </p>
             )}
           </form>

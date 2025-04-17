@@ -35,7 +35,7 @@ const AboutMe: React.FC = () => {
 
   return (
     <React.Fragment>
-      <section className="about-me relative mt-16 " id="about-me" ref={ref}>
+      <section className="about-me relative mt-16 " id="experience" ref={ref}>
         <div className="title-container flex flex-col justify-center items-center gap-6 p-32 w-1/2 max-lg:w-full max-lg:p-16 max-lg:items-start">
           <motion.div
             className="max-lg:w-full max-lg:flex max-lg:flex-col max-lg:items-start md:flex md:flex-col md:items-center md:w-full"
@@ -131,7 +131,7 @@ const AboutMe: React.FC = () => {
               </SwiperSlide>
             ))}
             <div
-              className="autoplay-progress absolute right-0 bottom-0 z-10 flex items-center justify-center font-bold text-orange text-4xl w-24 h-24 max-lg:w-16 max-lg:h-16 max-lg:text-3xl "
+              className="autoplay-progress absolute right-0 bottom-0 z-10 flex items-center justify-center font-bold text-orange text-4xl w-24 h-24 max-lg:w-16 max-lg:h-16 max-lg:text-2xl "
               slot="container-end"
             >
               <svg viewBox="0 0 48 48" ref={progressCircle}>

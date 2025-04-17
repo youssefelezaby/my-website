@@ -73,7 +73,39 @@ const NavBar: React.FC = () => {
         /&gt;
       </span>
     );
+    const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+      event.preventDefault();
 
+      if (linkEn) {
+        setActiveSection(linkEn);
+        setTimeOfLastClick(Date.now());
+      }
+
+      const targetId = link.substring(1);
+      if (targetId === "home") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          const isLargeScreen = window.innerWidth > 1024;
+          const offset = 100;
+          if (isLargeScreen) {
+            const elementPosition =
+              targetElement.getBoundingClientRect().top + window.scrollY;
+            const offsetPosition = elementPosition - offset;
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth",
+            });
+          } else {
+            targetElement.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        }
+      }
+    };
     return (
       <NavLink
         to={link}
@@ -81,6 +113,7 @@ const NavBar: React.FC = () => {
         onMouseLeave={() => setIsHovered(false)}
         className={`relative ${linkClasses}`}
         aria-aria-current={link}
+        onClick={handleClick}
       >
         <span>
           {leftArrow}
@@ -113,7 +146,6 @@ const NavBar: React.FC = () => {
                     &lt;
                   </span>
                   {language === "DE" ? link.de : link.en}
-                  {/* {link.de.toLocaleUpperCase()} */}
                 </div>
               ) : (
                 <div
@@ -123,8 +155,6 @@ const NavBar: React.FC = () => {
                   }}
                 >
                   {language === "DE" ? link.de : link.en}
-
-                  {/* {link.de.toLocaleUpperCase()} */}
                 </div>
               )}
             </CustomNavLink>
@@ -152,6 +182,7 @@ const NavBar: React.FC = () => {
                   onClick={() => {
                     setActiveSection(link.en);
                     setTimeOfLastClick(Date.now());
+
                     if (link.en === "Home") {
                       document.body.scrollIntoView({
                         behavior: "smooth",
@@ -176,10 +207,13 @@ const NavBar: React.FC = () => {
   );
 };
 
+// Define the SectionName type based on the expected values
+type SectionName = "Home" | "Skills" | "Projects" | "Experience" | "Contact";
+
 interface CustomNavLinkProps {
   link: string;
   children: React.ReactNode;
-  linkEn?: string;
+  linkEn?: SectionName; // Use the specific union type here
 }
 
 export default NavBar;

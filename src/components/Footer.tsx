@@ -22,69 +22,40 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="bg-darkblue flex justify-around items-center gap-10 p-10 max-lg:flex-col max-lg:pb-48 relative z-[1]">
-      {/*<div className="flex gap-10">
-         {FooterLinks.map((link, index) => (
-          <Popup
-            trigger={
-              <Link
-                to="#"
-                className="text-white text-2xl font-bold hover:text-orange"
-              >
-                {language === "DE" ? link.de : link.en}
-              </Link>
-            }
-            modal
-            key={index}
-          >
-            {(close: () => void) =>
-              (
-                <>
-                  <div
-                    className={`p-32 max-lg:p-16  rounded-3xl dark-shadow relative max-h-[80vh] overflow-y-auto ${
-                      theme === "dark" ? "bg-darkblue" : "bg-white"
-                    }`}
-                  >
-                    <button
-                      className="fixed top-0 right-0 bg-orange p-4 z-10 rounded-2xl m-4 hover:bg-lightblue transition-all duration-500 dark-shadow text-white"
-                      onClick={() => {
-                        close();
-                      }}
-                    >
-                      <VscChromeClose />
-                    </button>
-                    {link.data}
-                  </div>
-                </>
-              ) as React.ReactNode
-            }
-          </Popup>
-        ))} 
-      </div>*/}
-      <div className="socials flex gap-10">
-        {sideBarLeftSocials.map((social: SocialLink, index: number) => (
-          <Link
-            to={social.link}
-            className="block mb-2 "
-            key={index}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-current={
-              social.altimgname === "true"
-                ? social.altimgname + " button"
-                : social.altimgname + " button"
-            }
-          >
-            {typeof social.icon === "function" ? (
-              <social.icon className={`stroke-orange`} />
-            ) : (
-              <img
-                src={social.icon}
-                alt={social.altimgname}
-                style={{ stroke: social.iconcolor || "" }}
-              />
-            )}
-          </Link>
-        ))}
+      <div className="socials flex flex-col items-center gap-4">
+        {/* Wrap icons in a flex container to keep them horizontal */}
+        <div className="flex gap-10">
+          {sideBarLeftSocials.map((social: SocialLink, index: number) => (
+            <Link
+              to={social.link}
+              className="block" // Removed mb-2 as vertical spacing is handled by the parent gap
+              key={index}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-current={
+                social.altimgname === "true"
+                  ? social.altimgname + " button"
+                  : social.altimgname + " button"
+              }
+            >
+              {typeof social.icon === "function" ? (
+                <social.icon className={`stroke-orange`} />
+              ) : (
+                <img
+                  src={social.icon}
+                  alt={social.altimgname}
+                  style={{ stroke: social.iconcolor || "" }}
+                />
+              )}
+            </Link>
+          ))}
+        </div>
+        {/* Text is now below the icons and centered due to items-center on parent */}
+        <p className="text-white text-xl text-center mt-4">
+          {" "}
+          {/* Removed w-full and lg:order-last */}© 2025 Youssef Elezaby. All
+          rights reserved.
+        </p>
       </div>
     </footer>
   );

@@ -26,7 +26,7 @@ import jwticon from "../../assets/icons/jwticon.svg";
 import tastyMockup from "../../assets/img/tasty_mockup.webp";
 import instorMockup from "../../assets/img/instor_mockup.webp";
 import silentmoonMockup from "../../assets/img/silentmoon_mockup.webp";
-import profilepicture from "../img/me2.png";
+import profilepicture from "../img/me.webp";
 import caricon from "../../assets/icons/car-icon.svg";
 import travelicon from "../../assets/icons/travel-icon.svg";
 import hardwareicon from "../../assets/icons/hardware-icon.svg";
@@ -46,7 +46,7 @@ export const headerIntroData = {
   subtitle: "Fullstack Developer",
   description: {
     de: "Ich bin Youssef Elezaby, ein Fullstack-Entwickler mit dem Ziel, meine Karriere voranzutreiben und an inspirierenden Projekten teilzunehmen. Hier präsentiere ich meine Arbeiten und meine Leidenschaft für die Webentwicklung. Lassen Sie uns gemeinsam digitale Lösungen gestalten und die Zukunft formen!",
-    en: "I'm Youssef Elezaby, a fullstack developer with the goal of advancing my career and participating in inspiring projects. Here I present my work and my passion for web development. Let's shape digital solutions together and shape the future!",
+    en: "I'm Youssef Elezaby, a fullstack developer with the goal of advancing my career and participating in inspiring projects. Here I present my work and my passion for web development.",
   },
   buttons: [
     {
@@ -313,7 +313,7 @@ export const navLinks = [
   {
     de: "Berufserfahrung",
     en: "Experience",
-    hash: "#about-me",
+    hash: "#experience",
     icon: GoPerson,
   },
   { de: "Kontakt", en: "Contact", hash: "#contact", icon: GoMail },

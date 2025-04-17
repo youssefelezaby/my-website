@@ -504,19 +504,6 @@ export const contactData = {
       },
       pattern: "[@]{4}",
     },
-    {
-      name: "subject",
-      placeholder: {
-        de: "Deine Betreff",
-        en: "Your Subject",
-      },
-      type: "text",
-      validation: {
-        de: "Bitte gebe einen Betreff ein",
-        en: "Please fill in your subject",
-      },
-      pattern: "{10}",
-    },
   ],
   textarea: {
     placeholder: {

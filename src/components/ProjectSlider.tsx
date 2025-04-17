@@ -2,10 +2,9 @@ import bannerBg from "../assets/img/bannerbg.webp";
 import React, { useRef } from "react";
 import Button from "./Button";
 import LiveTicker from "./ParallaxText";
-import { projectsData, toastMessages } from "../assets/lib/data";
+import { projectsData } from "../assets/lib/data";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectCards, Pagination } from "swiper/modules";
-import { ToastContainer, toast } from "react-toastify";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import { useSectionInView } from "../assets/lib/hooks";
 import { useLanguage } from "../context/language-context";
@@ -40,19 +39,6 @@ const ProjectSlider: React.FC = () => {
         id="projects"
         ref={ref}
       >
-        <ToastContainer
-          className="w-max text-3xl block p-3 "
-          position="bottom-center"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
         <div
           className="quote-outer-container bg-[--darkblue] -rotate-3 flex justify-center items-center scale-110 pt-32 pb-32 max-lg:pt-16 max-lg:pb-16 max-lg:-ml-44 max-lg:-mr-44 max-lg:scale-100 "
           style={{

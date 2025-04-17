@@ -7,7 +7,6 @@ import { useTheme } from "../context/theme-context";
 
 import Popup from "reactjs-popup";
 import { VscChromeClose } from "react-icons/vsc";
-const LazyServiceStatus = lazy(() => import("../components/ServiceStatus"));
 
 interface SocialLink {
   link: string;
@@ -23,8 +22,8 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="bg-darkblue flex justify-around items-center gap-10 p-10 max-lg:flex-col max-lg:pb-48 relative z-[1]">
-      <div className="flex gap-10">
-        {/* {FooterLinks.map((link, index) => (
+      {/*<div className="flex gap-10">
+         {FooterLinks.map((link, index) => (
           <Popup
             trigger={
               <Link
@@ -59,9 +58,9 @@ const Footer: React.FC = () => {
               ) as React.ReactNode
             }
           </Popup>
-        ))} */}
-      </div>
-      <div className="socials flex gap-10 ">
+        ))} 
+      </div>*/}
+      <div className="socials flex gap-10">
         {sideBarLeftSocials.map((social: SocialLink, index: number) => (
           <Link
             to={social.link}
@@ -86,11 +85,6 @@ const Footer: React.FC = () => {
             )}
           </Link>
         ))}
-      </div>
-      <div>
-        <Suspense fallback={<div>Loading...</div>}>
-          <LazyServiceStatus />
-        </Suspense>
       </div>
     </footer>
   );

@@ -1,18 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import Button from "./Button";
-import axios from "axios";
 import { Highlight, themes } from "prism-react-renderer";
-import { contactData, toastMessages } from "../assets/lib/data.tsx";
+import { contactData } from "../assets/lib/data.tsx";
 import { useSectionInView } from "../assets/lib/hooks";
 import { useLanguage } from "../context/language-context";
-import { ToastContainer, toast } from "react-toastify";
 import { useTheme } from "../context/theme-context";
 import { motion, useScroll, useTransform } from "framer-motion";
 import "react-toastify/dist/ReactToastify.css";
+import emailjs from "@emailjs/browser";
 
 const Contact: React.FC = () => {
-  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "";
-
+  const formRef = useRef(null);
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
@@ -21,7 +19,8 @@ const Contact: React.FC = () => {
   const { ref } = useSectionInView("Contact");
   const { language } = useLanguage();
   const { theme } = useTheme();
-  const [error, setError] = useState<string | any>(null);
+  const [loading, setLoading] = useState(false);
+  const [isSent, setIsSent] = useState(false); // State to track if email was sent
 
   const animationReference = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -32,28 +31,23 @@ const Contact: React.FC = () => {
   const opacityProgess = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
 
   const notifySentForm: React.FormEventHandler<HTMLFormElement> = async (e) => {
-    setError(null);
-    console.log(error);
-
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
-
+    setLoading(true);
     try {
-      const response = await axios.post(apiBaseUrl, data);
-      console.log(response);
-      if (language === "DE") {
-        toast.success(toastMessages.successEmailSent.de);
-      } else {
-        toast.success(toastMessages.successEmailSent.en);
-      }
+      await emailjs.sendForm(
+        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+      );
+      setName("");
+      setEmail("");
+      setMessage("");
+      setIsSent(true);
     } catch (error) {
-      console.log(error);
-      if (language === "DE") {
-        toast.error(toastMessages.failedEmailSent.de);
-      } else {
-        toast.error(toastMessages.failedEmailSent.en);
-      }
-      setError("An Error occured, try again later");
+      console.log("EMAILJS ERROR", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -210,47 +204,41 @@ ${name}${lastUpdatedField === "name" ? (cursorBlink ? "|" : " ") : ""}
             </Highlight>
           </div>
           <form
+            ref={formRef}
             className="flex flex-col gap-0 justify-center items-center px-32 w-1/2 max-lg:w-full max-lg:p-0"
             onSubmit={notifySentForm}
             autoComplete="off"
           >
-            {contactData.inputfields
-              .filter((input) => input.name !== "subject")
-              .map((input, index) => (
-                <input
-                  key={index}
-                  type={input.type}
-                  placeholder={
-                    language === "DE"
-                      ? `${input.placeholder.de}`
-                      : `${input.placeholder.en}`
-                  }
-                  name={input.name}
-                  value={
-                    input.name === "name"
-                      ? name
-                      : input.name === "email"
-                      ? email
-                      : message
-                  }
-                  required
-                  onFocus={() => {
-                    handleInputFocus(input.name);
-                    setLastUpdatedField(input.name);
-                  }}
-                  onMouseEnter={() => {
-                    handleInputFocus(input.name);
-                    setLastUpdatedField(input.name);
-                  }}
-                  onChange={handleInputChange}
-                  className={`${
-                    theme === "dark"
-                      ? "bg-[--blackblue] dark-mode-shadow "
-                      : "bg-[--icewhite] dark-shadow "
-                  } max-sm:text-lg max-sm:p-10 w-full`}
-                />
-              ))}
+            {contactData.inputfields.map((input, index) => (
+              <input
+                key={index}
+                type={input.type}
+                placeholder={
+                  language === "DE"
+                    ? `${input.placeholder.de}`
+                    : `${input.placeholder.en}`
+                }
+                name={input.name}
+                value={input.name === "name" ? name : email}
+                required
+                onFocus={() => {
+                  handleInputFocus(input.name);
+                  setLastUpdatedField(input.name);
+                }}
+                onMouseEnter={() => {
+                  handleInputFocus(input.name);
+                  setLastUpdatedField(input.name);
+                }}
+                onChange={handleInputChange}
+                className={`${
+                  theme === "dark"
+                    ? "bg-[--blackblue] dark-mode-shadow "
+                    : "bg-[--icewhite] dark-shadow "
+                } max-sm:text-lg max-sm:p-10 w-full`}
+              />
+            ))}
             <textarea
+              required
               rows={contactData.textarea.rows}
               placeholder={
                 language === "DE"
@@ -258,6 +246,7 @@ ${name}${lastUpdatedField === "name" ? (cursorBlink ? "|" : " ") : ""}
                   : `${contactData.textarea.placeholder.en}`
               }
               name={contactData.textarea.name}
+              value={message}
               onFocus={() => {
                 handleInputFocus(contactData.textarea.name);
                 setLastUpdatedField(contactData.textarea.name);
@@ -275,7 +264,11 @@ ${name}${lastUpdatedField === "name" ? (cursorBlink ? "|" : " ") : ""}
             />
             <Button
               value={
-                language === "DE"
+                loading
+                  ? language === "DE"
+                    ? "Senden..."
+                    : "Sending..."
+                  : language === "DE"
                   ? `${contactData.button.value.de}`
                   : `${contactData.button.value.en}`
               }
@@ -285,19 +278,13 @@ ${name}${lastUpdatedField === "name" ? (cursorBlink ? "|" : " ") : ""}
               type="submit"
               elementType="input"
             />
-            <ToastContainer
-              className="w-max text-3xl block p-3 max-lg:w-full max-sm:text-3xl"
-              position="bottom-center"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme={theme}
-            />
+            {isSent && (
+              <p className="mt-4 text-center w-full">
+                {language === "DE"
+                  ? "E-Mail erfolgreich gesende! ✅"
+                  : "Email sent successfully! ✅"}
+              </p>
+            )}
           </form>
         </div>
       </section>

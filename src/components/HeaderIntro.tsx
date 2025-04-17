@@ -61,7 +61,6 @@ const HeaderIntro: React.FC = () => {
             buttoncolor={button.color}
             onClick={() => {
               if (button.name.toLowerCase() === "cv") {
-                // Replace with your actual CV file path
                 const link = document.createElement("a");
                 link.href = cvPdf;
                 link.download = "CV";

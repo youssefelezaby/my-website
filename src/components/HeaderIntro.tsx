@@ -7,7 +7,7 @@ import { useActiveSectionContext } from "../context/active-section-context";
 import { useLanguage } from "../context/language-context";
 import { BsMouse } from "react-icons/bs";
 import GradientText from "./GradientText";
-import cvPdf from "/public/CV.pdf";
+import cvPdf from "../assets/CV.pdf";
 const HeaderIntro: React.FC = () => {
   const { language } = useLanguage();
   const { ref } = useSectionInView("Home", 0.5);
@@ -59,15 +59,46 @@ const HeaderIntro: React.FC = () => {
                 : `#${button.name.toLowerCase()}`
             }
             buttoncolor={button.color}
-            onClick={() => {
-              if (button.name.toLowerCase() === "cv") {
+            onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+              event.preventDefault();
+              const buttonNameLower = button.name.toLowerCase();
+
+              if (buttonNameLower === "cv") {
                 const link = document.createElement("a");
                 link.href = cvPdf;
                 link.download = "CV";
                 link.click();
               } else {
-                setActiveSection(button.name);
+                const targetSection = button.name as SectionName; // Assuming SectionName is imported or defined
+                setActiveSection(targetSection);
                 setTimeOfLastClick(Date.now());
+
+                // Smooth scroll logic from NavBar
+                const targetId = buttonNameLower;
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                  const isLargeScreen = window.innerWidth > 1024; // Consistent with NavBar logic
+                  const offset = 100; // Consistent with NavBar logic
+
+                  if (isLargeScreen) {
+                    const elementPosition =
+                      targetElement.getBoundingClientRect().top +
+                      window.scrollY;
+                    const offsetPosition = elementPosition - offset;
+                    window.scrollTo({
+                      top: offsetPosition,
+                      behavior: "smooth",
+                    });
+                  } else {
+                    // For smaller screens, scrollIntoView might be sufficient,
+                    // or adjust offset as needed
+                    targetElement.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start", // Or 'center' depending on desired behavior
+                    });
+                  }
+                }
               }
             }}
           />
@@ -79,5 +110,8 @@ const HeaderIntro: React.FC = () => {
     </section>
   );
 };
+
+// Add SectionName type if not already available globally or imported
+type SectionName = "Home" | "Skills" | "Projects" | "Experience" | "Contact";
 
 export default HeaderIntro;

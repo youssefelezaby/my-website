@@ -28,18 +28,39 @@ export default function ThemeContextProvider({
     document.documentElement.classList.add(newTheme);
   };
 
+  // // dark mode by system default
+  // useEffect(() => {
+  //   const localTheme = window.localStorage.getItem(
+  //     THEME_STORAGE_KEY
+  //   ) as Theme | null;
+  //   const preferredColorScheme = window.matchMedia(
+  //     "(prefers-color-scheme: dark)"
+  //   ).matches
+  //     ? "dark"
+  //     : "light";
+  //   const initialTheme = localTheme || preferredColorScheme;
+
+  //   setTheme(initialTheme);
+  //   document.documentElement.classList.add(initialTheme);
+  // }, []);
   useEffect(() => {
     const localTheme = window.localStorage.getItem(
       THEME_STORAGE_KEY
     ) as Theme | null;
-    const preferredColorScheme = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches
-      ? "dark"
-      : "light";
-    const initialTheme = localTheme || preferredColorScheme;
 
-    setTheme(initialTheme);
+    // Use saved theme from localStorage if available, otherwise default to 'dark'
+    const initialTheme = localTheme || "dark";
+
+    // Only update state and class if it differs from the initial state ('dark')
+    if (initialTheme !== theme) {
+      setTheme(initialTheme);
+    }
+
+    // Ensure the correct class is applied based on the determined theme
+    // Remove the opposite class first to be safe
+    document.documentElement.classList.remove(
+      initialTheme === "dark" ? "light" : "dark"
+    );
     document.documentElement.classList.add(initialTheme);
   }, []);
 

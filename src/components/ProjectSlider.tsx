@@ -24,13 +24,6 @@ const ProjectSlider: React.FC = () => {
   });
   const scaleProgess = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
   const opacityProgess = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
-  const notifyServerRequest = () => {
-    // if (language === "DE") {
-    //   toast.info(toastMessages.loadingProject.de);
-    // } else {
-    //   toast.info(toastMessages.loadingProject.en);
-    // }
-  };
 
   return (
     <React.Fragment>
@@ -120,7 +113,6 @@ const ProjectSlider: React.FC = () => {
                         iconSVG={project.deploymenticon}
                         buttoncolor={project.colors.main}
                         iconcolor={project.colors.icon}
-                        onClick={notifyServerRequest}
                       />
                       <Button
                         label="Github Repository"

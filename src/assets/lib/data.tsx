@@ -18,6 +18,7 @@ import resend from "../../assets/icons/resend.svg";
 import nextjsicon from "../../assets/icons/nextjsicon.svg";
 import nodejsicon from "../../assets/icons/nodejsicon.svg";
 import vite from "../../assets/icons/vite.svg";
+import empty from "../../assets/icons/empty.svg";
 import neon from "../../assets/icons/neon.svg";
 import tailwindcssicon from "../../assets/icons/tailwindicon.svg";
 import mongodbicon from "../../assets/icons/mongoicon.svg";
@@ -144,7 +145,17 @@ export const projectsData = [
       "Eine Finanzanwendung in C#, entwickelt mit dem Frespire XLS-Paket zur präzisen Berechnung von DBR, DAR und Rabatten. Perfekt zur Automatisierung komplexer Finanzanalysen und Berichte.",
     description_EN:
       "A financial application built in C# using the Frespire XLS package, designed to calculate DBR, DAR, and rebates with accuracy and efficiency. Ideal for automating complex financial assessments and reporting.",
-    technologies: [{ name: "C#", icon: csharp }],
+    technologies: [
+      { name: "C#", icon: csharp },
+      { name: "", icon: empty },
+      { name: "", icon: empty },
+      { name: "", icon: empty },
+      { name: "", icon: empty },
+      { name: "", icon: empty },
+      { name: "", icon: empty },
+      { name: "", icon: empty },
+    ],
+
     image: ecs_calculations,
     githuburl: "https://github.com/youssefelezaby/ecs-calculations",
     githubicon: FiGithub,

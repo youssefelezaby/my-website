@@ -5,6 +5,7 @@ import {
   skillsDataCMS,
   skillsDataDesign,
   skillsDataWeb,
+  skillscloud,
 } from "../assets/lib/data";
 import { useTheme } from "../context/theme-context";
 import { useLanguage } from "../context/language-context";

@@ -1,5 +1,3 @@
-import canvaicon from "../../assets/icons/canvaicon.svg";
-import figmaicon from "../../assets/icons/figmaicon.svg";
 import htmlicon from "../../assets/icons/htmlicon.svg";
 import git from "../../assets/icons/git.svg";
 import jira from "../../assets/icons/jira.svg";
@@ -8,35 +6,34 @@ import cssicon from "../../assets/icons/cssicon.svg";
 import javascripticon from "../../assets/icons/javascripticon.svg";
 import typescripticon from "../../assets/icons/typescripticon.svg";
 import reacticon from "../../assets/icons/reacticon.svg";
+import gemini from "../../assets/icons/gemini.svg";
+import zod from "../../assets/icons/zod.svg";
+import shadcnui from "../../assets/icons/shadcn.svg";
+import vapi from "../../assets/icons/vapi.webp";
+import openai from "../../assets/icons/openai.svg";
+import upstash from "../../assets/icons/upstash.svg";
+import drizzle from "../../assets/icons/drizzle.svg";
 import react_native from "../../assets/icons/react_native.svg";
+import resend from "../../assets/icons/resend.svg";
 import nextjsicon from "../../assets/icons/nextjsicon.svg";
 import nodejsicon from "../../assets/icons/nodejsicon.svg";
+import vite from "../../assets/icons/vite.svg";
+import neon from "../../assets/icons/neon.svg";
 import tailwindcssicon from "../../assets/icons/tailwindicon.svg";
 import mongodbicon from "../../assets/icons/mongoicon.svg";
 import python from "../../assets/icons/python.svg";
 import nestjs from "../../assets/icons/nestjs.svg";
 import postgres from "../../assets/icons/postgres.svg";
-import trelloicon from "../../assets/icons/trelloicon.svg";
-import apiicon from "../../assets/icons/apiicon.svg";
-import axiosicon from "../../assets/icons/axiosicon.svg";
-import spotifyicon from "../../assets/icons/spotifyicon.svg";
-import netlifyicon from "../../assets/icons/netlifyicon.svg";
-import rendericon from "../../assets/icons/rendericon.svg";
-import jwticon from "../../assets/icons/jwticon.svg";
-import tastyMockup from "../../assets/img/tasty_mockup.webp";
-import instorMockup from "../../assets/img/instor_mockup.webp";
-import silentmoonMockup from "../../assets/img/silentmoon_mockup.webp";
+import firebase from "../../assets/icons/firebase.svg";
+import ai_interview from "../../assets/img/ai-interview.png";
+import ecs_calculations from "../../assets/img/ecs_calculations.png";
+import uni_library from "../../assets/img/uni.png";
 import profilepicture from "../img/me.webp";
-import caricon from "../../assets/icons/car-icon.svg";
-import travelicon from "../../assets/icons/travel-icon.svg";
-import hardwareicon from "../../assets/icons/hardware-icon.svg";
 import nextjsiconwhite from "../../assets/icons/nextjsiconwhite.svg";
-import expressiconwhite from "../../assets/icons/expressiconwhite.svg";
+import csharp from "../../assets/icons/csharp.svg";
 import { GoHome, GoPerson, GoMail, GoStack, GoProject } from "react-icons/go";
 import { FiGithub, FiLink, FiLinkedin, FiMail } from "react-icons/fi";
 import { FaFileDownload } from "react-icons/fa";
-import Imprint from "../../components/Imprint";
-import Privacy from "../../components/Privacy";
 
 export const headerIntroData = {
   title: {
@@ -83,25 +80,25 @@ export const headerIntroData = {
 
 export const projectsData = [
   {
-    title: "Tasty App",
+    title: "AI Interviews",
     description:
-      "Eine Rezepte App, die wir als Team mit React und der MealDB API gebaut haben. Ich war der Front-End Entwickler und habe Features wie Voice Search oder Print to PDF programmiert. Das Design wurde mit Figma erstellt. Die Website ist responsive und mobile-optimiert.",
+      "AI Interviews ist eine Webplattform, die dir mithilfe von KI hilft, Vorstellungsgespräche erfolgreich zu meistern. Entwickelt mit Next.js, gestaltet mit TailwindCSS und unterstützt durch Firebase und Vapis Voice Agents – für realistische und interaktive Übung in modernem Design.",
     description_EN:
-      "A recipe app that we built as a team with React and the MealDB API. I was the front-end developer and programmed features like voice search or print to PDF. The design was created with Figma. The website is responsive and mobile-optimized.",
+      "AI Interviews is a web platform that helps you succeed in job interviews using AI. Built with Next.js, styled with TailwindCSS, and powered by Firebase and Vapi’s voice agents, it offers realistic, interactive interview practice in a sleek, modern interface.",
     technologies: [
-      { name: "Html", icon: htmlicon },
-      { name: "CSS", icon: cssicon },
-      { name: "JavaScript", icon: javascripticon },
-      { name: "REST Api", icon: apiicon },
-      { name: "React", icon: reacticon },
-      { name: "Figma", icon: figmaicon },
-      { name: "Canva", icon: canvaicon },
-      { name: "Netlify", icon: netlifyicon },
-      { name: "Trello", icon: trelloicon },
+      { name: "NextJS", icon: nextjsiconwhite },
+      { name: "Typescript", icon: typescripticon },
+      { name: "TailwindCSS", icon: tailwindcssicon },
+      { name: "Shadcn/ui", icon: shadcnui },
+      { name: "Firebase", icon: firebase },
+      { name: "Gemini", icon: gemini },
+      { name: "Openai", icon: openai },
+      { name: "Zod", icon: zod },
+      { name: "Vapi", icon: vapi },
     ],
-    image: tastyMockup,
-    deploymenturl: "#",
-    githuburl: "https://github.com/YoussefElezaby",
+    image: ai_interview,
+    deploymenturl: "https://ai-interviews-youssef.vercel.app",
+    githuburl: "https://github.com/youssefelezaby/ai-interviews",
     githubicon: FiGithub,
     deploymenticon: FiLink,
     colors: {
@@ -113,28 +110,25 @@ export const projectsData = [
   },
 
   {
-    title: "Silentmoon",
+    title: "University Library",
     description:
-      "Eine Yoga und Meditations App, die wir als Team mit React, MongoDB, Express und Node.js gebaut haben. Meine Aufgabe als Gitmaster und Backend Entwickler bestand darin, das Backend mit Anbindung anhand einer Restful API zu programmieren und die Datenbank in MongoDB zu modellieren.",
+      "Das University Library Management System ist eine skalierbare, produktionsreife Plattform auf Basis von Next.js, TypeScript und PostgreSQL. Es bietet eine öffentliche App und ein Admin-Panel mit Buchausleihe, Nutzerverwaltung und automatisierten Workflows.",
     description_EN:
-      "A yoga and meditation app that we built as a team with React, MongoDB, Express and Node.js. My task as a gitmaster and backend developer was to program the backend with connection using a restful API and to model the database in MongoDB.",
+      "The University Library Management System is a scalable, production-ready platform built with Next.js, TypeScript, and PostgreSQL. It features a public app and admin panel with book borrowing, user management, and automated workflows.",
     technologies: [
-      { name: "Html", icon: htmlicon },
-      { name: "CSS", icon: cssicon },
-      { name: "JavaScript", icon: javascripticon },
-      { name: "Spotify Api", icon: spotifyicon },
-      { name: "React", icon: reacticon },
-      { name: "JWT & Bcrypt", icon: jwticon },
-      { name: "Axios", icon: axiosicon },
-      { name: "MongoDB", icon: mongodbicon },
-      { name: "Express", icon: expressiconwhite },
-      { name: "Node.js", icon: nodejsicon },
-      { name: "Figma", icon: figmaicon },
-      { name: "Render", icon: rendericon },
+      { name: "NextJS", icon: nextjsiconwhite },
+      { name: "PostgreSQL", icon: postgres },
+      { name: "Typescript", icon: typescripticon },
+      { name: "Shadcn/ui", icon: shadcnui },
+      { name: "Upstash", icon: upstash },
+      { name: "Neon", icon: neon },
+      { name: "Resend", icon: resend },
+      { name: "TailwindCSS", icon: tailwindcssicon },
+      { name: "Drizzle ORM", icon: drizzle },
     ],
-    image: silentmoonMockup,
-    deploymenturl: "#",
-    githuburl: "https://github.com/YoussefElezaby/",
+    image: uni_library,
+    deploymenturl: "https://uni-library-youssef.vercel.app",
+    githuburl: "https://github.com/youssefelezaby/uni-library",
     githubicon: FiGithub,
     deploymenticon: FiLink,
     colors: {
@@ -145,28 +139,14 @@ export const projectsData = [
     },
   },
   {
-    title: "Furniture Organizer",
+    title: "ECS Calculations",
     description:
-      "Eine Möbel-Organizer App, die wir als Duo-Team mit React, MongoDB, Express und Node.js programmiert haben. Als Gitmaster habe ich die Verknüpfung des Frontends mit dem Backend und die Datenbankmodellierung übernommen. Die App ist responsive und mobile-optimiert.",
+      "Eine Finanzanwendung in C#, entwickelt mit dem Frespire XLS-Paket zur präzisen Berechnung von DBR, DAR und Rabatten. Perfekt zur Automatisierung komplexer Finanzanalysen und Berichte.",
     description_EN:
-      "A furniture organizer app that we programmed as a duo team with React, MongoDB, Express and Node.js. As a gitmaster, I took over the connection of the frontend to the backend and the database modeling. The app is responsive and mobile-optimized.",
-    technologies: [
-      { name: "Html", icon: htmlicon },
-      { name: "CSS", icon: cssicon },
-      { name: "JavaScript", icon: javascripticon },
-      { name: "React", icon: reacticon },
-      { name: "JWT & Bcrypt", icon: jwticon },
-      { name: "Axios", icon: axiosicon },
-      { name: "MongoDB", icon: mongodbicon },
-      { name: "Express", icon: expressiconwhite },
-      { name: "Node.js", icon: nodejsicon },
-      { name: "Figma", icon: figmaicon },
-      { name: "Render", icon: rendericon },
-      { name: "Trello", icon: trelloicon },
-    ],
-    image: instorMockup,
-    deploymenturl: "#",
-    githuburl: "https://github.com/YoussefElezaby",
+      "A financial application built in C# using the Frespire XLS package, designed to calculate DBR, DAR, and rebates with accuracy and efficiency. Ideal for automating complex financial assessments and reporting.",
+    technologies: [{ name: "C#", icon: csharp }],
+    image: ecs_calculations,
+    githuburl: "https://github.com/youssefelezaby/ecs-calculations",
     githubicon: FiGithub,
     deploymenticon: FiLink,
     colors: {
@@ -233,6 +213,12 @@ export const skillsDataWeb = [
         color: "#38B2AC",
       },
       {
+        title: "Vite",
+        hash: "#Vite",
+        icon: vite,
+        color: "#BB36FE",
+      },
+      {
         title: "React Native",
         hash: "#ReactNative",
         icon: react_native,
@@ -276,11 +262,42 @@ export const skillsDataDesign = [
         icon: mongodbicon,
         color: "#449C45",
       },
+      {
+        title: "Firebase",
+        hash: "#Firebase",
+        icon: firebase,
+        color: "#DD2C00",
+      },
     ],
   },
 ] as const;
 
 export const skillsDataCMS = [
+  {
+    skillsTitle: "Tools",
+    skills: [
+      {
+        title: "Docker",
+        hash: "#Docker",
+        icon: docker,
+        color: "#2396ED",
+      },
+      {
+        title: "Git",
+        hash: "#Git",
+        icon: git,
+        color: "#EE513B",
+      },
+      {
+        title: "Jira",
+        hash: "#Jira",
+        icon: jira,
+        color: "#0255CF",
+      },
+    ],
+  },
+] as const;
+export const skillscloud = [
   {
     skillsTitle: "Tools",
     skills: [
@@ -317,11 +334,6 @@ export const navLinks = [
     icon: GoPerson,
   },
   { de: "Kontakt", en: "Contact", hash: "#contact", icon: GoMail },
-] as const;
-
-export const FooterLinks = [
-  { de: "Impressum", en: "Imprint", hash: "#imprint", data: <Imprint /> },
-  { de: "Datenschutz", en: "Privacy", hash: "#privacy", data: <Privacy /> },
 ] as const;
 
 export const sideBarRightMail = {
@@ -378,7 +390,6 @@ export const aboutMeData = {
         "• Zusammenarbeit mit Frontend-Entwicklern, die mit React Native arbeiten, um nahtlose Full-Stack-Mobile-Anwendungsfunktionen bereitzustellen. " +
         "\n" +
         "• Arbeit in einem Agile Environment, Nutzung von Git für Versionskontrolle sowie Teilnahme an Sprint-Planungen und täglichen Stand-ups.",
-      icon: hardwareicon,
     },
     {
       title: "Initium Solutions",
@@ -395,7 +406,6 @@ export const aboutMeData = {
         "• Anpassung von Bitrix24 Cloud mit JavaScript, jQuery und der Bitrix API." +
         "\n" +
         "• Bereitstellung technischer Einblicke und Umsetzung von Lösungen zur Steigerung von Effizienz und Marktreife.",
-      icon: caricon,
     },
     {
       title: "ECS Distribution",
@@ -412,7 +422,6 @@ export const aboutMeData = {
         "• Branchenkenntnisse genutzt, um Produktverbesserungen und Wettbewerbsfähigkeit voranzutreiben." +
         "\n" +
         "• Automatisierungstools wie Analyse-Apps, Online-Shops und Workflow-Skripte entwickelt.",
-      icon: travelicon,
     },
   ],
   paragraphs_EN: [
@@ -429,7 +438,6 @@ export const aboutMeData = {
         "• Collaborated with frontend teams using React Native to deliver seamless mobile application functionalities." +
         "\n" +
         "• Actively participated in Agile processes including sprint planning and daily stand-ups to ensure timely delivery and quality.",
-      icon: hardwareicon,
     },
     {
       title: "Initium Solutions",
@@ -446,7 +454,6 @@ export const aboutMeData = {
         "• Customized Bitrix24 Cloud via JavaScript, jQuery, and Bitrix API." +
         "\n" +
         "• Delivered technical insights and implemented solutions to boost efficiency and market readiness.",
-      icon: caricon,
     },
     {
       title: "ECS Distribution",
@@ -463,7 +470,6 @@ export const aboutMeData = {
         "• Used industry insights to drive product improvements and competitiveness." +
         "\n" +
         "• Built automation tools like analytics apps, online Stores, and workflow scripts.",
-      icon: travelicon,
     },
   ],
 };

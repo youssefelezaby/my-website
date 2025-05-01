@@ -9,7 +9,6 @@ import { Tooltip as ReactTooltip } from "react-tooltip";
 import { useSectionInView } from "../assets/lib/hooks";
 import { useLanguage } from "../context/language-context";
 import { motion, useScroll, useTransform } from "framer-motion";
-import "react-toastify/dist/ReactToastify.css";
 import "swiper/css";
 import "swiper/css/effect-cards";
 import "swiper/css/pagination";
@@ -63,7 +62,7 @@ const ProjectSlider: React.FC = () => {
               effect={"cards"}
               grabCursor={true}
               modules={[EffectCards, Autoplay, Pagination]}
-              className=" w-[60vw] max-lg:hidden min-[1921px]:px-96"
+              className=" w-[1100px] h-[600px] max-lg:hidden min-[1921px]:px-96"
               loop={true}
               autoplay={{
                 delay: 4000,
@@ -107,13 +106,15 @@ const ProjectSlider: React.FC = () => {
                       </div>
                     </div>
                     <div className="buttons flex gap-10">
-                      <Button
-                        label="Live Demo"
-                        link={project.deploymenturl}
-                        iconSVG={project.deploymenticon}
-                        buttoncolor={project.colors.main}
-                        iconcolor={project.colors.icon}
-                      />
+                      {"deploymenturl" in project && project.deploymenturl && (
+                        <Button
+                          label="Live Demo"
+                          link={project.deploymenturl}
+                          iconSVG={project.deploymenticon}
+                          buttoncolor={project.colors.main}
+                          iconcolor={project.colors.icon}
+                        />
+                      )}
                       <Button
                         label="Github Repository"
                         link={project.githuburl}
@@ -124,12 +125,11 @@ const ProjectSlider: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="right-content relative h-[40rem] overflow-hidden rounded-xl w-[40%] transition-all duration-200 shadow-2xl">
+                  <div className="right-content relative h-[29rem] overflow-hidden rounded-xl w-[40%] transition-all duration-200 shadow-2xl">
                     <img
                       src={project.image}
                       alt={`${project.title}-project-mockup`}
-                      className={`w-full h-auto transition-all duration-[6000ms] transform opacity-100 hover:translate-y-[-50%] 
-                      `}
+                      className={``}
                     />
                   </div>
                 </SwiperSlide>
@@ -144,19 +144,23 @@ const ProjectSlider: React.FC = () => {
                 <h2 className="text-white text-5xl max-sm:text-4xl mb-4">
                   {project.title}
                 </h2>
-                <img
-                  src={project.image}
-                  alt={project.image}
-                  className="h-[25vh] w-full object-cover object-top rounded-2xl mb-4"
-                />
-                <div className="buttons flex gap-6 max-lg:flex-col max-lg:gap-4">
-                  <Button
-                    label="Live Demo"
-                    link={project.deploymenturl}
-                    iconSVG={project.deploymenticon}
-                    buttoncolor={project.colors.main}
-                    iconcolor={project.colors.icon}
+                <div className="h-[35vh] w-full overflow-hidden object-cover rounded-2xl mb-4">
+                  <img
+                    src={project.image}
+                    alt={project.image}
+                    className="w-full h-full "
                   />
+                </div>
+                <div className="buttons flex gap-6 max-lg:flex-col max-lg:gap-4">
+                  {"deploymenturl" in project && project.deploymenturl && (
+                    <Button
+                      label="Live Demo"
+                      link={project.deploymenturl}
+                      iconSVG={project.deploymenticon}
+                      buttoncolor={project.colors.main}
+                      iconcolor={project.colors.icon}
+                    />
+                  )}
                   <Button
                     label="Github Repository"
                     link={project.githuburl}
@@ -180,7 +184,7 @@ const ProjectSlider: React.FC = () => {
                         key={innerIndex}
                         src={technology.icon}
                         alt={`${project.title}-icon`}
-                        className="h-[4rem] max-sm:h-[3.5rem] w-[70%]"
+                        className="h-[4rem] w-[70%]"
                         data-tooltip-id="my-tooltip"
                         data-tooltip-content={technology.name}
                       />

@@ -12,7 +12,7 @@ interface SocialLink {
 const SiteBarLeft: React.FC = () => {
   return (
     <div
-      className="absolute flex items-center flex-col justify-center top-0 left-0 ml-8 max-lg:h-[10%] max-lg:ml-4"
+      className="absolute flex items-center flex-col justify-center top-0 left-0 ml-8 max-lg:h-[10%] max-lg:ml-4 z-50" // Added z-50
       id="home"
     >
       <div className="flex items-center justify-center flex-col">

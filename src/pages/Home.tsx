@@ -27,7 +27,6 @@ const Home: React.FC = () => {
             height={10}
             smoothness={true}
           />
-
           <LazySiteBarLeft />
           <LazyHeaderIntro />
           <LazySiteBarRight />

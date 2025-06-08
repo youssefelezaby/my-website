@@ -17,6 +17,7 @@ import react_native from "../../assets/icons/react_native.svg";
 import resend from "../../assets/icons/resend.svg";
 import nextjsicon from "../../assets/icons/nextjsicon.svg";
 import nodejsicon from "../../assets/icons/nodejsicon.svg";
+import syncfusion from "../../assets/icons/syncfusion.svg";
 import vite from "../../assets/icons/vite.svg";
 import empty from "../../assets/icons/empty.svg";
 import neon from "../../assets/icons/neon.svg";
@@ -25,9 +26,12 @@ import mongodbicon from "../../assets/icons/mongoicon.svg";
 import python from "../../assets/icons/python.svg";
 import nestjs from "../../assets/icons/nestjs.svg";
 import postgres from "../../assets/icons/postgres.svg";
+import rr from "../../assets/icons/rr.svg";
+import aw from "../../assets/icons/appwrite.svg";
 import firebase from "../../assets/icons/firebase.svg";
 import ai_interview from "../../assets/img/ai-interview.png";
 import ecs_calculations from "../../assets/img/ecs_calculations.png";
+import travel_agency from "../../assets/img/travel_agency.png";
 import uni_library from "../../assets/img/uni.png";
 import profilepicture from "../img/me.webp";
 import nextjsiconwhite from "../../assets/icons/nextjsiconwhite.svg";
@@ -137,6 +141,34 @@ export const projectsData = [
       second: "secondary-btn",
       icon: "white",
       projectcolor: "#FFD5BD",
+    },
+  },
+  {
+    title: "Travel Agency",
+    description:
+      "AI Trips ist eine moderne Reiseplattform, die mithilfe von KI intelligente Reisepläne nach individuellen Vorlieben erstellt. Sie bietet Buchungsfunktionen, ein Admin-Dashboard und Echtzeit-Analysen – alles in einem sicheren, responsiven und skalierbaren Design.",
+    description_EN:
+      "AI Trips is a modern travel platform that uses AI to generate smart itineraries based on preferences. It features trip booking, an admin dashboard, and real-time analytics—all in a secure, responsive, and scalable design.",
+    technologies: [
+      { name: "Vite", icon: vite },
+      { name: "React Router", icon: rr },
+      { name: "Typescript", icon: typescripticon },
+      { name: "AppWrite", icon: aw },
+      { name: "Gemini", icon: gemini },
+      { name: "TailwindCSS", icon: tailwindcssicon },
+      { name: "Shadcn/ui", icon: shadcnui },
+      { name: "Syncfusion", icon: syncfusion },
+    ],
+    image: travel_agency,
+    deploymenturl: "https://travel-agency-youssef.vercel.app",
+    githuburl: "https://github.com/youssefelezaby/travel-agency",
+    githubicon: FiGithub,
+    deploymenticon: FiLink,
+    colors: {
+      main: "main-btn",
+      second: "secondary-btn",
+      icon: "white",
+      projectcolor: "#70B9BE",
     },
   },
   {

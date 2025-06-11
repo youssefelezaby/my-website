@@ -421,6 +421,14 @@ export const aboutMeData = {
   description_EN: "A few code snippets about me",
   paragraphs_DE: [
     {
+      title: "Selbstständig/Freelancing",
+      job_title: "Full-Stack Entwickler",
+      start_date: "Feb 2024",
+      end_date: "Aktuell",
+      description:
+        "• Arbeit an freiberuflichen Projekten und selbst initiierten Webanwendungen mit Fokus auf Full-Stack-Entwicklung, UI/UX und Deployment. Einsatz moderner Tools und Workflows zur Entwicklung skalierbarer und wartbarer Anwendungen.",
+    },
+    {
       title: "Updropp",
       job_title: "Backend Entwickler",
       start_date: "Aug 2023",
@@ -468,6 +476,14 @@ export const aboutMeData = {
     },
   ],
   paragraphs_EN: [
+    {
+      title: "Self-Employed/Freelancing",
+      job_title: "Full-Stack Developer",
+      start_date: "Feb 2024",
+      end_date: "Current",
+      description:
+        "• Working on freelance projects and self-initiated web applications, focusing on full-stack development, UI/UX, and deployment. Used modern tools and workflows to build scalable, maintainable apps.",
+    },
     {
       title: "Updropp",
       job_title: "Backend Developer",
